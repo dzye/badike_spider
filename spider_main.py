@@ -1,7 +1,8 @@
 
 #encoding:utf-8
-from baike_spider import url_manager,html_downloader,html_parser,html_outputer
-
+# from baike_spider import url_manager,html_downloader,html_parser,html_outputer
+import url_manager,html_downloader,html_parser,html_outputer
+import pymongo
 
 class SpiderMain(object):
     def __init__(self):
@@ -21,7 +22,7 @@ class SpiderMain(object):
                 new_urls,new_data = self.parser.parse(new_url,html_cont)
                 self.urls.add_new_urls(new_urls)
                 self.outputer.collect_data(new_data)
-                if count > 0:
+                if count > 500:
                     break
 
                 count = count + 1
